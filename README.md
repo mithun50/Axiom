@@ -5,7 +5,7 @@
 [![Discord.js](https://img.shields.io/badge/discord.js-v14-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.js.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Groq](https://img.shields.io/badge/Groq-Llama_4-F55036?style=for-the-badge&logo=meta&logoColor=white)](https://groq.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-green?style=for-the-badge)](package.json)
 
 A production-ready Discord bot powered by:
@@ -279,7 +279,24 @@ termux-wake-lock
 
 ## License
 
-MIT License - Created by **Mithun Gowda B**, **Naren V** & **NextGenXplorrers Team**
+**Proprietary License** - All Rights Reserved
+
+Copyright (c) 2025 **Mithun Gowda B**, **Naren V** & **NextGenXplorrers Team**
+
+- No commercial use
+- No modification or redistribution
+- No trademark rights
+- Personal/educational use only
+
+See [LICENSE](LICENSE) for full terms.
+
+## Contributing
+
+Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
+## Security
+
+For security concerns, please see our [Security Policy](SECURITY.md).
 
 ---
 
