@@ -16,7 +16,7 @@
     "dotenv": "^16.4.5",
     "edge-tts": "^1.0.1",
     "express": "^4.21.0",
-    "groq-sdk": "^0.8.0"
+    "groq-sdk": "^0.37.0"
   },
   "devDependencies": {
     "prettier": "^3.4.2"
