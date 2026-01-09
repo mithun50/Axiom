@@ -1387,6 +1387,25 @@
           throw new Error('Marked library not loaded');
         }
 
+        // Fix relative links to point to GitHub
+        const repoBase = 'https://github.com/mithun50/Axiom/blob/main/';
+        const rawBase = 'https://raw.githubusercontent.com/mithun50/Axiom/main/';
+        container.querySelectorAll('a').forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:')) {
+            link.setAttribute('href', repoBase + href);
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener');
+          }
+        });
+        // Fix relative images to load from GitHub
+        container.querySelectorAll('img').forEach(img => {
+          const src = img.getAttribute('src');
+          if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+            img.setAttribute('src', rawBase + src);
+          }
+        });
+
         // Ensure the container is visible after content loads
         if (docsContainer) {
           docsContainer.classList.add('visible');
