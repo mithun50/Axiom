@@ -142,13 +142,15 @@ const discordClient = new Client({
 
 const app = express();
 app.get('/', (req, res) => res.send('Axiom Bot is running'));
-app.get('/health', (req, res) =>
+app.get('/health', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.json({
     status: 'healthy',
     uptime: Math.floor(process.uptime()),
     guilds: discordClient.guilds?.cache?.size || 0,
-  })
-);
+  });
+});
 app.listen(CONFIG.PORT, () => console.log(`🌐 Express running on port ${CONFIG.PORT}`));
 
 // =============================================================================
