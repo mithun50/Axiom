@@ -143,6 +143,19 @@ app.get('/health', (req, res) => res.json({
 app.listen(CONFIG.PORT, () => console.log(`🌐 Express running on port ${CONFIG.PORT}`));
 
 // =============================================================================
+// Keep Alive - Auto Ping (for Render/Koyeb free tier)
+// =============================================================================
+
+const RENDER_URL = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL;
+if (RENDER_URL) {
+  setInterval(() => {
+    fetch(`${RENDER_URL}/health`)
+      .then(() => console.log('🏓 Keep-alive ping sent'))
+      .catch(() => {});
+  }, 14 * 60 * 1000); // Ping every 14 minutes
+}
+
+// =============================================================================
 // Slash Commands Definition
 // =============================================================================
 

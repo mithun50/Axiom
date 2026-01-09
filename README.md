@@ -192,16 +192,44 @@ cd ~/Axiom && npm start
 termux-wake-lock
 ```
 
-### Cloud Hosting
+### Cloud Hosting (Render - Recommended)
 
-This bot includes an Express server for deployment on:
+1. Go to [render.com](https://render.com)
+2. Sign up with **GitHub**
+3. Click **New** → **Web Service**
+4. Connect your `Axiom` repo
+5. Configure:
+   | Setting | Value |
+   |---------|-------|
+   | Name | `axiom-bot` |
+   | Runtime | `Node` |
+   | Build Command | `npm install` |
+   | Start Command | `npm start` |
+
+6. Add **Environment Variables**:
+   ```
+   DISCORD_TOKEN = your_discord_token
+   DISCORD_APP_ID = your_app_id
+   GROQ_API_KEY = your_groq_key
+   OCR_API_KEY = your_ocr_key
+   PORT = 3000
+   APP_URL = https://your-app.onrender.com
+   ```
+
+7. Click **Create Web Service**
+
+**Auto Keep-Alive:** The bot pings itself every 14 minutes to prevent Render's free tier from sleeping.
+
+### Other Free Platforms
+
 - **Koyeb** - Free tier, no credit card
-- **Railway** - 500 hrs/month free
-- **Render** - Free tier available
+- **Glitch** - Free, import from GitHub
+- **Adaptable.io** - Free Node.js hosting
 
-Health check endpoints:
+### Health Check Endpoints
+
 - `GET /` - Returns "Axiom Bot is running"
-- `GET /health` - Returns JSON status
+- `GET /health` - Returns JSON status with uptime
 
 ---
 
