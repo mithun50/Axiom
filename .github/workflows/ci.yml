@@ -101,5 +101,5 @@ jobs:
         run: npm install -g html-validate
 
       - name: Validate docs/index.html
-        run: html-validate docs/index.html --config '{"extends": ["html-validate:recommended"], "rules": {"no-inline-style": "off", "prefer-native-element": "off"}}'
+        run: html-validate docs/index.html
         continue-on-error: true

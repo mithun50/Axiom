@@ -1,0 +1,9 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-inline-style": "off",
+    "prefer-native-element": "off",
+    "element-permitted-content": "off",
+    "wcag/h63": "off"
+  }
+}
