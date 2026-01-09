@@ -1,6 +1,6 @@
 {
   "name": "axiom-discord-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Discord AI Bot with Groq (Llama 4 Scout), OCR.space, and TTS",
   "main": "index.js",
   "type": "module",
@@ -12,11 +12,17 @@
     "lint": "node --check index.js"
   },
   "dependencies": {
+    "@discordjs/voice": "^0.19.1-dev.1767398517-8ccae833e",
+    "@snazzah/davey": "^0.1.9",
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
     "edge-tts": "^1.0.1",
     "express": "^4.21.0",
-    "groq-sdk": "^0.8.0"
+    "groq-sdk": "^0.8.0",
+    "libsodium-wrappers": "^0.7.13",
+    "opusscript": "^0.1.1",
+    "prism-media": "^1.3.5",
+    "sodium-native": "^5.0.10"
   },
   "devDependencies": {
     "prettier": "^3.4.2"
