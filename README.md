@@ -35,22 +35,22 @@ A production-ready Discord bot powered by:
 
 ## Features
 
-| Feature                  | Description                                    |
-| ------------------------ | ---------------------------------------------- |
-| **AI Chat**              | Ask anything using Groq's Llama 4 Scout        |
-| **Voice Conversations**  | Talk to the bot in voice channels              |
-| **Speech-to-Text**       | Bot listens and transcribes using Whisper      |
-| **Text-to-Speech**       | Bot speaks responses in voice channels         |
-| **Multi-User Support**   | Multiple users can interact simultaneously     |
-| **Response Queue**       | Questions queued while bot is speaking         |
-| **Image OCR**            | Extract and analyze text from images           |
-| **Reply Context**        | Understands referenced messages                |
-| **Slash Commands**       | Modern Discord slash command support           |
-| **Prefix Commands**      | Classic `!command` style support               |
-| **@Mention**             | Respond when mentioned                         |
-| **Auto-Leave**           | Automatically leaves empty voice channels      |
-| **Multi-Server**         | Works across multiple Discord servers          |
-| **Fun Commands**         | Jokes, facts, quotes, roasts & more            |
+| Feature                 | Description                                |
+| ----------------------- | ------------------------------------------ |
+| **AI Chat**             | Ask anything using Groq's Llama 4 Scout    |
+| **Voice Conversations** | Talk to the bot in voice channels          |
+| **Speech-to-Text**      | Bot listens and transcribes using Whisper  |
+| **Text-to-Speech**      | Bot speaks responses in voice channels     |
+| **Multi-User Support**  | Multiple users can interact simultaneously |
+| **Response Queue**      | Questions queued while bot is speaking     |
+| **Image OCR**           | Extract and analyze text from images       |
+| **Reply Context**       | Understands referenced messages            |
+| **Slash Commands**      | Modern Discord slash command support       |
+| **Prefix Commands**     | Classic `!command` style support           |
+| **@Mention**            | Respond when mentioned                     |
+| **Auto-Leave**          | Automatically leaves empty voice channels  |
+| **Multi-Server**        | Works across multiple Discord servers      |
+| **Fun Commands**        | Jokes, facts, quotes, roasts & more        |
 
 ---
 
@@ -58,32 +58,32 @@ A production-ready Discord bot powered by:
 
 ### Slash Commands (/)
 
-| Command                  | Description                    |
-| ------------------------ | ------------------------------ |
-| `/ask <question>`        | Ask the AI anything            |
-| `/speak <text>`          | Convert text to speech         |
-| `/summarize <text>`      | Summarize text                 |
-| `/translate <text> <to>` | Translate text                 |
-| `/eli5 <topic>`          | Explain Like I'm 5             |
-| `/define <word>`         | Define a word                  |
-| `/joke`                  | Tell a joke                    |
-| `/fact`                  | Share a random fact            |
-| `/quote`                 | Share an inspiring quote       |
-| `/roast @user`           | Playful roast                  |
-| `/advice <topic>`        | Get advice                     |
-| `/code <code>`           | Review code                    |
-| `/story <prompt>`        | Generate a story               |
-| `/help`                  | Show all commands              |
-| `/about`                 | About Axiom & creators         |
+| Command                  | Description              |
+| ------------------------ | ------------------------ |
+| `/ask <question>`        | Ask the AI anything      |
+| `/speak <text>`          | Convert text to speech   |
+| `/summarize <text>`      | Summarize text           |
+| `/translate <text> <to>` | Translate text           |
+| `/eli5 <topic>`          | Explain Like I'm 5       |
+| `/define <word>`         | Define a word            |
+| `/joke`                  | Tell a joke              |
+| `/fact`                  | Share a random fact      |
+| `/quote`                 | Share an inspiring quote |
+| `/roast @user`           | Playful roast            |
+| `/advice <topic>`        | Get advice               |
+| `/code <code>`           | Review code              |
+| `/story <prompt>`        | Generate a story         |
+| `/help`                  | Show all commands        |
+| `/about`                 | About Axiom & creators   |
 
 ### Voice Commands (/)
 
-| Command            | Description                              |
-| ------------------ | ---------------------------------------- |
-| `/join`            | Join your voice channel                  |
-| `/leave`           | Leave the voice channel                  |
-| `/say <text>`      | Speak text in voice channel              |
-| `/talk <question>` | Ask AI and hear the response in voice    |
+| Command            | Description                           |
+| ------------------ | ------------------------------------- |
+| `/join`            | Join your voice channel               |
+| `/leave`           | Leave the voice channel               |
+| `/say <text>`      | Speak text in voice channel           |
+| `/talk <question>` | Ask AI and hear the response in voice |
 
 ### Prefix Commands (!)
 
@@ -116,28 +116,29 @@ All slash commands also work with `!` prefix:
 
 The bot responds when you say:
 
-| Pattern               | Examples                                    |
-| --------------------- | ------------------------------------------- |
-| Questions with "you"  | "Who are you?", "What can you do?"          |
-| Questions (?)         | Any sentence ending with a question mark    |
-| "Can/will/do you"     | "Can you help?", "Will you tell me?"        |
-| "Tell me"             | "Tell me a joke", "Tell me about space"     |
-| "What/why/how/where"  | "What is AI?", "Why is the sky blue?"       |
-| Wake words            | "Hey", "Hi", "Hello", "Axiom", "Bot"        |
+| Pattern              | Examples                                 |
+| -------------------- | ---------------------------------------- |
+| Questions with "you" | "Who are you?", "What can you do?"       |
+| Questions (?)        | Any sentence ending with a question mark |
+| "Can/will/do you"    | "Can you help?", "Will you tell me?"     |
+| "Tell me"            | "Tell me a joke", "Tell me about space"  |
+| "What/why/how/where" | "What is AI?", "Why is the sky blue?"    |
+| Wake words           | "Hey", "Hi", "Hello", "Axiom", "Bot"     |
 
 ### Multi-User & Queue System
 
 The bot handles multiple users and concurrent requests intelligently:
 
-| Scenario | Handling |
-| -------- | -------- |
-| Multiple users in voice | All users can speak, responses queued |
-| Text + Voice simultaneously | Both processed in parallel |
+| Scenario                    | Handling                                   |
+| --------------------------- | ------------------------------------------ |
+| Multiple users in voice     | All users can speak, responses queued      |
+| Text + Voice simultaneously | Both processed in parallel                 |
 | Question while bot speaking | Queued and answered after current response |
-| Multiple servers | Each server has independent voice session |
-| Rapid questions (5+) | Queue limit prevents spam, oldest dropped |
+| Multiple servers            | Each server has independent voice session  |
+| Rapid questions (5+)        | Queue limit prevents spam, oldest dropped  |
 
 **How the Queue Works:**
+
 ```
 User asks question while bot is speaking
          ↓
@@ -153,6 +154,7 @@ Bot finishes current response
 ### Voice Requirements
 
 The bot needs these permissions for voice:
+
 - Connect to Voice Channels
 - Speak in Voice Channels
 - Use Voice Activity
@@ -243,20 +245,21 @@ APP_URL=https://your-app.onrender.com
 
 Required permissions for full functionality:
 
-| Permission           | Required For           |
-| -------------------- | ---------------------- |
-| Send Messages        | Text responses         |
-| Read Message History | Reply context          |
-| Attach Files         | TTS audio files        |
-| Embed Links          | Rich embeds            |
-| Use Slash Commands   | Slash command support  |
-| Connect              | Join voice channels    |
-| Speak                | Voice TTS playback     |
-| Use Voice Activity   | Voice listening        |
+| Permission           | Required For          |
+| -------------------- | --------------------- |
+| Send Messages        | Text responses        |
+| Read Message History | Reply context         |
+| Attach Files         | TTS audio files       |
+| Embed Links          | Rich embeds           |
+| Use Slash Commands   | Slash command support |
+| Connect              | Join voice channels   |
+| Speak                | Voice TTS playback    |
+| Use Voice Activity   | Voice listening       |
 
 ### 3. Invite Bot to Server
 
 Use this URL format:
+
 ```
 https://discord.com/api/oauth2/authorize?client_id=YOUR_APP_ID&permissions=3214336&scope=bot%20applications.commands
 ```
@@ -318,13 +321,13 @@ termux-wake-lock
 
 ### Other Free Platforms
 
-| Platform      | FFmpeg | Notes                    |
-| ------------- | ------ | ------------------------ |
-| Render.com    | ✅     | Recommended, easy setup  |
-| Railway.app   | ✅     | Good free tier           |
-| Koyeb         | ✅     | No credit card required  |
-| Glitch        | ✅     | Import from GitHub       |
-| Fly.io        | ✅     | Generous free tier       |
+| Platform    | FFmpeg | Notes                   |
+| ----------- | ------ | ----------------------- |
+| Render.com  | ✅     | Recommended, easy setup |
+| Railway.app | ✅     | Good free tier          |
+| Koyeb       | ✅     | No credit card required |
+| Glitch      | ✅     | Import from GitHub      |
+| Fly.io      | ✅     | Generous free tier      |
 
 ### Health Check Endpoints
 
@@ -337,33 +340,33 @@ termux-wake-lock
 
 ### Core Dependencies
 
-| Package              | Version  | Purpose                        |
-| -------------------- | -------- | ------------------------------ |
-| discord.js           | ^14.16.3 | Discord API client             |
-| @discordjs/voice     | ^0.19.x  | Voice channel support          |
-| groq-sdk             | ^0.8.0   | AI chat & voice transcription  |
-| express              | ^4.21.0  | Health check server            |
+| Package          | Version  | Purpose                       |
+| ---------------- | -------- | ----------------------------- |
+| discord.js       | ^14.16.3 | Discord API client            |
+| @discordjs/voice | ^0.19.x  | Voice channel support         |
+| groq-sdk         | ^0.8.0   | AI chat & voice transcription |
+| express          | ^4.21.0  | Health check server           |
 
 ### Voice Dependencies
 
-| Package              | Version  | Purpose                        |
-| -------------------- | -------- | ------------------------------ |
-| @snazzah/davey       | ^0.1.9   | Discord DAVE encryption        |
-| sodium-native        | ^5.x     | Voice encryption modes         |
-| prism-media          | ^1.3.5   | Audio codec handling           |
-| opusscript           | ^0.1.1   | Opus audio codec               |
+| Package        | Version | Purpose                 |
+| -------------- | ------- | ----------------------- |
+| @snazzah/davey | ^0.1.9  | Discord DAVE encryption |
+| sodium-native  | ^5.x    | Voice encryption modes  |
+| prism-media    | ^1.3.5  | Audio codec handling    |
+| opusscript     | ^0.1.1  | Opus audio codec        |
 
 ---
 
 ## API Limits
 
-| Service       | Free Tier Limit                     |
-| ------------- | ----------------------------------- |
-| Groq API      | Generous free tier with rate limits |
-| Groq Whisper  | Included with Groq API              |
-| OCR.space     | 25,000 requests/month               |
-| Discord       | Standard bot rate limits            |
-| Google TTS    | Unlimited (fair use)                |
+| Service      | Free Tier Limit                     |
+| ------------ | ----------------------------------- |
+| Groq API     | Generous free tier with rate limits |
+| Groq Whisper | Included with Groq API              |
+| OCR.space    | 25,000 requests/month               |
+| Discord      | Standard bot rate limits            |
+| Google TTS   | Unlimited (fair use)                |
 
 ---
 
@@ -415,6 +418,7 @@ termux-wake-lock
 ### Voice Encryption Errors
 
 If you see encryption-related errors:
+
 ```bash
 # Reinstall voice dependencies
 npm install @discordjs/voice@latest @snazzah/davey sodium-native
@@ -425,6 +429,7 @@ npm install @discordjs/voice@latest @snazzah/davey sodium-native
 ## Changelog
 
 ### v1.1.0 (Latest)
+
 - Added voice channel support (join, leave, say, talk)
 - Added voice listening with Groq Whisper transcription
 - Added conversational AI triggers (responds to natural speech)
@@ -439,6 +444,7 @@ npm install @discordjs/voice@latest @snazzah/davey sodium-native
 - Queue limit (5) to prevent spam
 
 ### v1.0.0
+
 - Initial release
 - Text commands and slash commands
 - Image OCR support

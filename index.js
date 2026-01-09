@@ -265,20 +265,14 @@ const slashCommands = [
   new SlashCommandBuilder().setName('about').setDescription('About Axiom and its creators'),
 
   // Voice Commands
-  new SlashCommandBuilder()
-    .setName('join')
-    .setDescription('Join your voice channel'),
+  new SlashCommandBuilder().setName('join').setDescription('Join your voice channel'),
 
-  new SlashCommandBuilder()
-    .setName('leave')
-    .setDescription('Leave the voice channel'),
+  new SlashCommandBuilder().setName('leave').setDescription('Leave the voice channel'),
 
   new SlashCommandBuilder()
     .setName('say')
     .setDescription('Speak text in voice channel')
-    .addStringOption(opt =>
-      opt.setName('text').setDescription('Text to speak').setRequired(true)
-    ),
+    .addStringOption(opt => opt.setName('text').setDescription('Text to speak').setRequired(true)),
 
   new SlashCommandBuilder()
     .setName('talk')
@@ -427,7 +421,8 @@ async function processVoiceQueue(guildId) {
       if (textChannel) {
         let displayResponse = response;
         if (displayResponse.length > CONFIG.MAX_RESPONSE_LENGTH) {
-          displayResponse = displayResponse.slice(0, CONFIG.MAX_RESPONSE_LENGTH - 30) + '\n\n*... (truncated)*';
+          displayResponse =
+            displayResponse.slice(0, CONFIG.MAX_RESPONSE_LENGTH - 30) + '\n\n*... (truncated)*';
         }
         await textChannel.send(`🔊 **Axiom:** ${displayResponse}`).catch(() => {});
       }
@@ -470,7 +465,11 @@ async function joinVC(interaction, greet = true) {
     const existingConnection = getVoiceConnection(interaction.guildId);
     if (existingConnection) {
       if (existingConnection.joinConfig.channelId === voiceChannel.id) {
-        return { success: true, message: '✅ Already in your voice channel!', connection: existingConnection };
+        return {
+          success: true,
+          message: '✅ Already in your voice channel!',
+          connection: existingConnection,
+        };
       }
       existingConnection.destroy();
     }
@@ -514,14 +513,21 @@ async function joinVC(interaction, greet = true) {
     if (greet) {
       setTimeout(async () => {
         try {
-          await speakInVC(interaction.guildId, "Hello! I'm Axiom. Talk to me or use slash commands!");
+          await speakInVC(
+            interaction.guildId,
+            "Hello! I'm Axiom. Talk to me or use slash commands!"
+          );
         } catch (e) {
           console.log('Could not play greeting:', e.message);
         }
       }, 500);
     }
 
-    return { success: true, message: `🔊 Joined **${voiceChannel.name}**! 🎤 Voice listening enabled.`, connection };
+    return {
+      success: true,
+      message: `🔊 Joined **${voiceChannel.name}**! 🎤 Voice listening enabled.`,
+      connection,
+    };
   } catch (error) {
     console.error('Voice join error:', error);
     return { success: false, message: '❌ Failed to join voice channel. Please try again.' };
@@ -532,7 +538,7 @@ async function joinVC(interaction, greet = true) {
 function startVoiceListening(connection, guildId, textChannel) {
   const receiver = connection.receiver;
 
-  receiver.speaking.on('start', async (userId) => {
+  receiver.speaking.on('start', async userId => {
     // Don't listen to the bot itself
     if (userId === discordClient.user.id) return;
 
@@ -571,12 +577,12 @@ function startVoiceListening(connection, guildId, textChannel) {
 
       audioStream.pipe(opusDecoder);
 
-      opusDecoder.on('data', (chunk) => {
+      opusDecoder.on('data', chunk => {
         chunks.push(chunk);
       });
 
       // Handle decoder errors
-      opusDecoder.on('error', (err) => {
+      opusDecoder.on('error', err => {
         console.log('Opus decoder error:', err.message);
         cleanup();
       });
@@ -611,32 +617,32 @@ function startVoiceListening(connection, guildId, textChannel) {
 
           // Conversational detection - respond to questions and direct speech
           const wakePatterns = [
-            /\baxiom\b/i,                    // "axiom" anywhere
-            /^hey\b/i,                       // "hey" at start
-            /^hi\b/i,                        // "hi" at start
-            /^ok\b/i,                        // "ok" at start
-            /^yo\b/i,                        // "yo" at start
-            /^yeah\b/i,                      // "yeah" at start
-            /\bhey bot\b/i,                  // "hey bot"
-            /\byou there\b/i,                // "you there"
-            /\bbot\b/i,                      // "bot" anywhere
-            /^hello\b/i,                     // "hello" at start
-            /^excuse me\b/i,                 // "excuse me" at start
-            /\?$/,                           // ends with question mark
-            /\bwho\b.*\byou\b/i,             // "who ... you" (who are you, who created you)
-            /\bwhat\b.*\byou\b/i,            // "what ... you" (what are you, what can you do)
-            /\bcan you\b/i,                  // "can you..."
-            /\bwill you\b/i,                 // "will you..."
-            /\bare you\b/i,                  // "are you..."
-            /\bdo you\b/i,                   // "do you..."
-            /\btell me\b/i,                  // "tell me..."
-            /\bwhat is\b/i,                  // "what is..."
-            /\bwhat's\b/i,                   // "what's..."
-            /\bhow do\b/i,                   // "how do..."
-            /\bhow can\b/i,                  // "how can..."
-            /\bwhy\b/i,                      // "why..." questions
-            /\bwhen\b/i,                     // "when..." questions
-            /\bwhere\b/i,                    // "where..." questions
+            /\baxiom\b/i, // "axiom" anywhere
+            /^hey\b/i, // "hey" at start
+            /^hi\b/i, // "hi" at start
+            /^ok\b/i, // "ok" at start
+            /^yo\b/i, // "yo" at start
+            /^yeah\b/i, // "yeah" at start
+            /\bhey bot\b/i, // "hey bot"
+            /\byou there\b/i, // "you there"
+            /\bbot\b/i, // "bot" anywhere
+            /^hello\b/i, // "hello" at start
+            /^excuse me\b/i, // "excuse me" at start
+            /\?$/, // ends with question mark
+            /\bwho\b.*\byou\b/i, // "who ... you" (who are you, who created you)
+            /\bwhat\b.*\byou\b/i, // "what ... you" (what are you, what can you do)
+            /\bcan you\b/i, // "can you..."
+            /\bwill you\b/i, // "will you..."
+            /\bare you\b/i, // "are you..."
+            /\bdo you\b/i, // "do you..."
+            /\btell me\b/i, // "tell me..."
+            /\bwhat is\b/i, // "what is..."
+            /\bwhat's\b/i, // "what's..."
+            /\bhow do\b/i, // "how do..."
+            /\bhow can\b/i, // "how can..."
+            /\bwhy\b/i, // "why..." questions
+            /\bwhen\b/i, // "when..." questions
+            /\bwhere\b/i, // "where..." questions
           ];
 
           const hasWakeWord = wakePatterns.some(pattern => pattern.test(lowerText));
@@ -662,14 +668,16 @@ function startVoiceListening(connection, guildId, textChannel) {
               if (textChannel) {
                 await textChannel.send(`👂 **Listening...** Say your question!`).catch(() => {});
               }
-              await speakInVC(guildId, "Yes? What would you like to know?");
+              await speakInVC(guildId, 'Yes? What would you like to know?');
               return;
             }
 
             // Send confirmation to text channel
             if (textChannel) {
               const queueStatus = isBotSpeaking ? ' (queued)' : '';
-              await textChannel.send(`🎤 **Voice:** "${transcription}"${queueStatus}`).catch(() => {});
+              await textChannel
+                .send(`🎤 **Voice:** "${transcription}"${queueStatus}`)
+                .catch(() => {});
             }
 
             // If bot is speaking, queue the response
@@ -684,7 +692,9 @@ function startVoiceListening(connection, guildId, textChannel) {
             if (!response) {
               console.log('❌ No AI response received');
               if (textChannel) {
-                await textChannel.send(`❌ Sorry, I couldn't process that. Try again.`).catch(() => {});
+                await textChannel
+                  .send(`❌ Sorry, I couldn't process that. Try again.`)
+                  .catch(() => {});
               }
               return;
             }
@@ -696,7 +706,9 @@ function startVoiceListening(connection, guildId, textChannel) {
             if (textChannel) {
               let displayResponse = response;
               if (displayResponse.length > CONFIG.MAX_RESPONSE_LENGTH) {
-                displayResponse = displayResponse.slice(0, CONFIG.MAX_RESPONSE_LENGTH - 30) + '\n\n*... (truncated)*';
+                displayResponse =
+                  displayResponse.slice(0, CONFIG.MAX_RESPONSE_LENGTH - 30) +
+                  '\n\n*... (truncated)*';
               }
               await textChannel.send(`🔊 **Axiom:** ${displayResponse}`).catch(() => {});
             }
@@ -713,7 +725,7 @@ function startVoiceListening(connection, guildId, textChannel) {
         }
       });
 
-      audioStream.on('error', (err) => {
+      audioStream.on('error', err => {
         console.log('Audio stream error:', err.message);
         cleanup();
       });
@@ -722,7 +734,6 @@ function startVoiceListening(connection, guildId, textChannel) {
       audioStream.on('close', () => {
         cleanup();
       });
-
     } catch (err) {
       cleanup();
       console.log('Voice listen error:', err.message);
@@ -1326,7 +1337,8 @@ async function handleSlashCommand(interaction) {
         // Also show text response
         let displayResponse = aiResponse;
         if (displayResponse.length > CONFIG.MAX_RESPONSE_LENGTH) {
-          displayResponse = displayResponse.slice(0, CONFIG.MAX_RESPONSE_LENGTH - 30) + '\n\n*... (truncated)*';
+          displayResponse =
+            displayResponse.slice(0, CONFIG.MAX_RESPONSE_LENGTH - 30) + '\n\n*... (truncated)*';
         }
         await interaction.editReply(`${talkResult.success ? '🔊' : '💬'} ${displayResponse}`);
         return;
