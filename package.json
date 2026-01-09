@@ -1,0 +1,32 @@
+{
+  "name": "axiom-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord AI Bot with Groq (Llama 4 Scout), OCR.space, and TTS",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "edge-tts": "^1.0.1",
+    "express": "^4.21.0",
+    "groq-sdk": "^0.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "ai",
+    "groq",
+    "ocr",
+    "tts",
+    "llama"
+  ],
+  "author": "Mithun Gowda B, Naren V & NextGenXplorrers Team",
+  "license": "MIT"
+}
