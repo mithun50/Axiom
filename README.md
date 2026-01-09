@@ -1,5 +1,7 @@
 # Axiom Discord AI Bot
 
+[![Invite Axiom](https://img.shields.io/badge/Invite_Axiom-Add_to_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/api/oauth2/authorize?client_id=1459077260941197435&permissions=274877958144&scope=bot%20applications.commands)
+
 [![Discord.js](https://img.shields.io/badge/discord.js-v14-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.js.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Groq](https://img.shields.io/badge/Groq-Llama_4-F55036?style=for-the-badge&logo=meta&logoColor=white)](https://groq.com/)
@@ -153,10 +155,11 @@ PORT=3000
 
 ### 2. Invite Bot to Server
 
-Use this URL (replace YOUR_CLIENT_ID):
+**[Click here to invite Axiom to your server](https://discord.com/api/oauth2/authorize?client_id=1459077260941197435&permissions=274877958144&scope=bot%20applications.commands)**
 
+Or use this URL:
 ```
-https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=274877958144&scope=bot%20applications.commands
+https://discord.com/api/oauth2/authorize?client_id=1459077260941197435&permissions=274877958144&scope=bot%20applications.commands
 ```
 
 Permissions included:
