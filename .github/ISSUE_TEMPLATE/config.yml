@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://mithun50.github.io/Axiom/
+    about: Check the documentation first for answers
+  - name: Discord Support
+    url: https://discord.gg/your-server
+    about: Get help in our Discord server
+  - name: Security Issues
+    url: https://github.com/mithun50/Axiom/security/advisories/new
+    about: Report security vulnerabilities privately

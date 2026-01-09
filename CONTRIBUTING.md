@@ -39,14 +39,14 @@ Axiom Bot is a **proprietary project** with restricted rights. Before contributi
 
 ## What We Accept
 
-| Type | Accepted |
-|------|----------|
-| Bug fixes | Yes |
-| Documentation | Yes |
-| Feature suggestions | Yes |
-| Security patches | Yes |
-| Major rewrites | No |
-| Forking for commercial use | No |
+| Type                       | Accepted |
+| -------------------------- | -------- |
+| Bug fixes                  | Yes      |
+| Documentation              | Yes      |
+| Feature suggestions        | Yes      |
+| Security patches           | Yes      |
+| Major rewrites             | No       |
+| Forking for commercial use | No       |
 
 ## Code Guidelines
 
@@ -103,6 +103,7 @@ Types: fix, feat, docs, style, refactor
 ## Recognition
 
 Contributors will be acknowledged in:
+
 - README.md
 - Release notes
 - Our social media (with permission)

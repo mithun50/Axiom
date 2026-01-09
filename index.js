@@ -14,7 +14,7 @@ import {
   REST,
   Routes,
   SlashCommandBuilder,
-  EmbedBuilder
+  EmbedBuilder,
 } from 'discord.js';
 
 // =============================================================================
@@ -46,7 +46,14 @@ const CONFIG = {
   COMMAND_PREFIX: '!',
   MAX_RESPONSE_LENGTH: 1900,
   MAX_TTS_LENGTH: 500,
-  ALLOWED_IMAGE_TYPES: ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp', 'image/bmp'],
+  ALLOWED_IMAGE_TYPES: [
+    'image/png',
+    'image/jpeg',
+    'image/jpg',
+    'image/gif',
+    'image/webp',
+    'image/bmp',
+  ],
 
   // Bot Credits
   CREDITS: {
@@ -57,8 +64,8 @@ const CONFIG = {
       instagram: 'https://www.instagram.com/nexgenxplorerr',
       youtube: 'https://youtube.com/@nexgenxplorer',
       playstore: 'https://play.google.com/store/apps/dev?id=8262374975871504599',
-      email: 'nxgextra@gmail.com'
-    }
+      email: 'nxgextra@gmail.com',
+    },
   },
 
   // System prompts for different modes
@@ -95,8 +102,8 @@ When users ask about your creators, team, or who made you, share this informatio
 
     roast: `You are Axiom. Give a playful, funny roast. Keep it light-hearted and not mean-spirited. Be witty!`,
 
-    advice: `You are Axiom, a wise advisor. Give thoughtful, practical advice. Be supportive and constructive.`
-  }
+    advice: `You are Axiom, a wise advisor. Give thoughtful, practical advice. Be supportive and constructive.`,
+  },
 };
 
 // =============================================================================
@@ -135,11 +142,13 @@ const discordClient = new Client({
 
 const app = express();
 app.get('/', (req, res) => res.send('Axiom Bot is running'));
-app.get('/health', (req, res) => res.json({
-  status: 'healthy',
-  uptime: Math.floor(process.uptime()),
-  guilds: discordClient.guilds?.cache?.size || 0
-}));
+app.get('/health', (req, res) =>
+  res.json({
+    status: 'healthy',
+    uptime: Math.floor(process.uptime()),
+    guilds: discordClient.guilds?.cache?.size || 0,
+  })
+);
 app.listen(CONFIG.PORT, () => console.log(`🌐 Express running on port ${CONFIG.PORT}`));
 
 // =============================================================================
@@ -148,11 +157,14 @@ app.listen(CONFIG.PORT, () => console.log(`🌐 Express running on port ${CONFIG
 
 const RENDER_URL = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL;
 if (RENDER_URL) {
-  setInterval(() => {
-    fetch(`${RENDER_URL}/health`)
-      .then(() => console.log('🏓 Keep-alive ping sent'))
-      .catch(() => {});
-  }, 14 * 60 * 1000); // Ping every 14 minutes
+  setInterval(
+    () => {
+      fetch(`${RENDER_URL}/health`)
+        .then(() => console.log('🏓 Keep-alive ping sent'))
+        .catch(() => {});
+    },
+    14 * 60 * 1000
+  ); // Ping every 14 minutes
 }
 
 // =============================================================================
@@ -163,7 +175,9 @@ const slashCommands = [
   new SlashCommandBuilder()
     .setName('ask')
     .setDescription('Ask Axiom anything')
-    .addStringOption(opt => opt.setName('question').setDescription('Your question').setRequired(true)),
+    .addStringOption(opt =>
+      opt.setName('question').setDescription('Your question').setRequired(true)
+    ),
 
   new SlashCommandBuilder()
     .setName('speak')
@@ -173,35 +187,35 @@ const slashCommands = [
   new SlashCommandBuilder()
     .setName('summarize')
     .setDescription('Summarize text')
-    .addStringOption(opt => opt.setName('text').setDescription('Text to summarize').setRequired(true)),
+    .addStringOption(opt =>
+      opt.setName('text').setDescription('Text to summarize').setRequired(true)
+    ),
 
   new SlashCommandBuilder()
     .setName('translate')
     .setDescription('Translate text')
-    .addStringOption(opt => opt.setName('text').setDescription('Text to translate').setRequired(true))
+    .addStringOption(opt =>
+      opt.setName('text').setDescription('Text to translate').setRequired(true)
+    )
     .addStringOption(opt => opt.setName('to').setDescription('Target language').setRequired(true)),
 
   new SlashCommandBuilder()
     .setName('eli5')
-    .setDescription('Explain Like I\'m 5')
-    .addStringOption(opt => opt.setName('topic').setDescription('Topic to explain').setRequired(true)),
+    .setDescription("Explain Like I'm 5")
+    .addStringOption(opt =>
+      opt.setName('topic').setDescription('Topic to explain').setRequired(true)
+    ),
 
   new SlashCommandBuilder()
     .setName('define')
     .setDescription('Define a word')
     .addStringOption(opt => opt.setName('word').setDescription('Word to define').setRequired(true)),
 
-  new SlashCommandBuilder()
-    .setName('joke')
-    .setDescription('Tell me a joke'),
+  new SlashCommandBuilder().setName('joke').setDescription('Tell me a joke'),
 
-  new SlashCommandBuilder()
-    .setName('fact')
-    .setDescription('Share an interesting fact'),
+  new SlashCommandBuilder().setName('fact').setDescription('Share an interesting fact'),
 
-  new SlashCommandBuilder()
-    .setName('quote')
-    .setDescription('Share an inspiring quote'),
+  new SlashCommandBuilder().setName('quote').setDescription('Share an inspiring quote'),
 
   new SlashCommandBuilder()
     .setName('roast')
@@ -211,7 +225,9 @@ const slashCommands = [
   new SlashCommandBuilder()
     .setName('advice')
     .setDescription('Get advice on something')
-    .addStringOption(opt => opt.setName('topic').setDescription('What do you need advice on?').setRequired(true)),
+    .addStringOption(opt =>
+      opt.setName('topic').setDescription('What do you need advice on?').setRequired(true)
+    ),
 
   new SlashCommandBuilder()
     .setName('code')
@@ -223,13 +239,9 @@ const slashCommands = [
     .setDescription('Generate a short story')
     .addStringOption(opt => opt.setName('prompt').setDescription('Story prompt').setRequired(true)),
 
-  new SlashCommandBuilder()
-    .setName('help')
-    .setDescription('Show all commands'),
+  new SlashCommandBuilder().setName('help').setDescription('Show all commands'),
 
-  new SlashCommandBuilder()
-    .setName('about')
-    .setDescription('About Axiom and its creators'),
+  new SlashCommandBuilder().setName('about').setDescription('About Axiom and its creators'),
 ].map(cmd => cmd.toJSON());
 
 // =============================================================================
@@ -261,7 +273,7 @@ async function askAI(prompt, systemPrompt = CONFIG.PROMPTS.default) {
   const chatCompletion = await groq.chat.completions.create({
     messages: [
       { role: 'system', content: systemPrompt },
-      { role: 'user', content: prompt }
+      { role: 'user', content: prompt },
     ],
     model: CONFIG.GROQ_CHAT_MODEL,
     temperature: 0.7,
@@ -286,7 +298,11 @@ async function extractTextFromImage(imageUrl) {
 
   const data = await response.json();
   if (data.IsErroredOnProcessing) throw new Error(data.ErrorMessage?.[0] || 'OCR failed');
-  return data.ParsedResults?.map(r => r.ParsedText).join('\n').trim() || '';
+  return (
+    data.ParsedResults?.map(r => r.ParsedText)
+      .join('\n')
+      .trim() || ''
+  );
 }
 
 async function textToSpeech(text) {
@@ -309,7 +325,7 @@ async function textToSpeech(text) {
   for (const chunk of chunks) {
     const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${CONFIG.TTS_LANGUAGE}&client=tw-ob&ttsspeed=${CONFIG.TTS_SPEED}&q=${encodeURIComponent(chunk)}`;
     const res = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
     });
     if (!res.ok) throw new Error('TTS failed');
     buffers.push(Buffer.from(await res.arrayBuffer()));
@@ -319,15 +335,19 @@ async function textToSpeech(text) {
 
 function isValidImage(attachment) {
   if (!attachment) return false;
-  if (attachment.contentType) return CONFIG.ALLOWED_IMAGE_TYPES.includes(attachment.contentType.toLowerCase());
+  if (attachment.contentType)
+    return CONFIG.ALLOWED_IMAGE_TYPES.includes(attachment.contentType.toLowerCase());
   const ext = attachment.name?.toLowerCase().split('.').pop();
   return ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'].includes(ext);
 }
 
 function cleanTextForTTS(text) {
   return text
-    .replace(/\*\*/g, '').replace(/\*/g, '').replace(/`/g, '')
-    .replace(/#{1,6}\s/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\*\*/g, '')
+    .replace(/\*/g, '')
+    .replace(/`/g, '')
+    .replace(/#{1,6}\s/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
     .slice(0, CONFIG.MAX_TTS_LENGTH);
 }
 
@@ -449,7 +469,10 @@ async function handleMessage(message) {
           const ttsText = args.join(' ');
           if (ttsText) {
             const audio = await textToSpeech(ttsText);
-            await message.reply({ content: '🔊', files: [new AttachmentBuilder(audio, { name: 'speech.mp3' })] });
+            await message.reply({
+              content: '🔊',
+              files: [new AttachmentBuilder(audio, { name: 'speech.mp3' })],
+            });
           }
           return;
         case 'eli5':
@@ -457,7 +480,7 @@ async function handleMessage(message) {
           commandType = 'eli5';
           break;
         case 'summarize':
-          userQuery = args.join(' ') || (refContext?.text) || '';
+          userQuery = args.join(' ') || refContext?.text || '';
           commandType = 'summarize';
           break;
         case 'translate':
@@ -499,49 +522,75 @@ async function handleMessage(message) {
           break;
         case 'help':
           await message.reply({
-            embeds: [new EmbedBuilder()
-              .setTitle('🤖 Axiom Commands')
-              .setColor(0x5865F2)
-              .setDescription('**Prefix Commands (!)**\n' +
-                '`!ask <question>` - Ask anything\n' +
-                '`!speak <text>` - Text to speech\n' +
-                '`!eli5 <topic>` - Explain simply\n' +
-                '`!summarize <text>` - Summarize\n' +
-                '`!translate <text> to <lang>` - Translate\n' +
-                '`!define <word>` - Define a word\n' +
-                '`!joke` - Tell a joke\n' +
-                '`!fact` - Random fact\n' +
-                '`!quote` - Inspiring quote\n' +
-                '`!advice <topic>` - Get advice\n' +
-                '`!roast @user` - Playful roast\n' +
-                '`!code <code>` - Review code\n' +
-                '`!story <prompt>` - Generate story\n' +
-                '`!about` - About Axiom\n\n' +
-                '**Other Ways to Use**\n' +
-                '• @mention me with a question\n' +
-                '• Reply to any message and @mention me\n' +
-                '• Attach an image for OCR analysis\n' +
-                '• Use slash commands (/ask, /joke, etc.)')
-              .setFooter({ text: 'Powered by Groq AI' })]
+            embeds: [
+              new EmbedBuilder()
+                .setTitle('🤖 Axiom Commands')
+                .setColor(0x5865f2)
+                .setDescription(
+                  '**Prefix Commands (!)**\n' +
+                    '`!ask <question>` - Ask anything\n' +
+                    '`!speak <text>` - Text to speech\n' +
+                    '`!eli5 <topic>` - Explain simply\n' +
+                    '`!summarize <text>` - Summarize\n' +
+                    '`!translate <text> to <lang>` - Translate\n' +
+                    '`!define <word>` - Define a word\n' +
+                    '`!joke` - Tell a joke\n' +
+                    '`!fact` - Random fact\n' +
+                    '`!quote` - Inspiring quote\n' +
+                    '`!advice <topic>` - Get advice\n' +
+                    '`!roast @user` - Playful roast\n' +
+                    '`!code <code>` - Review code\n' +
+                    '`!story <prompt>` - Generate story\n' +
+                    '`!about` - About Axiom\n\n' +
+                    '**Other Ways to Use**\n' +
+                    '• @mention me with a question\n' +
+                    '• Reply to any message and @mention me\n' +
+                    '• Attach an image for OCR analysis\n' +
+                    '• Use slash commands (/ask, /joke, etc.)'
+                )
+                .setFooter({ text: 'Powered by Groq AI' }),
+            ],
           });
           return;
         case 'about':
           await message.reply({
-            embeds: [new EmbedBuilder()
-              .setTitle('🤖 About Axiom')
-              .setColor(0x00D4FF)
-              .setDescription('**Axiom** is an advanced AI-powered Discord bot that brings intelligent conversation, text-to-speech, image analysis, and fun commands to your server!')
-              .addFields(
-                { name: '👨‍💻 Created By', value: CONFIG.CREDITS.creators.join('\n'), inline: true },
-                { name: '🏢 Team', value: CONFIG.CREDITS.team, inline: true },
-                { name: '📦 Version', value: `v${CONFIG.CREDITS.version}`, inline: true },
-                { name: '⚡ Powered By', value: '• **Groq AI** (Llama 4 Scout)\n• **OCR.space** (Image Text)\n• **Google TTS** (Speech)', inline: false },
-                { name: '✨ Features', value: '• AI Chat & Q&A\n• Text-to-Speech\n• Image OCR Analysis\n• Reply Context Awareness\n• 15+ Slash Commands\n• Fun Commands (jokes, facts, quotes)', inline: false },
-                { name: '🌐 Connect With Us', value: `📸 [Instagram](${CONFIG.CREDITS.socials.instagram})\n▶️ [YouTube](${CONFIG.CREDITS.socials.youtube})\n📱 [Play Store](${CONFIG.CREDITS.socials.playstore})\n📧 ${CONFIG.CREDITS.socials.email}`, inline: false }
-              )
-              .setThumbnail(discordClient.user.displayAvatarURL())
-              .setFooter({ text: `Made with ❤️ by ${CONFIG.CREDITS.team}` })
-              .setTimestamp()]
+            embeds: [
+              new EmbedBuilder()
+                .setTitle('🤖 About Axiom')
+                .setColor(0x00d4ff)
+                .setDescription(
+                  '**Axiom** is an advanced AI-powered Discord bot that brings intelligent conversation, text-to-speech, image analysis, and fun commands to your server!'
+                )
+                .addFields(
+                  {
+                    name: '👨‍💻 Created By',
+                    value: CONFIG.CREDITS.creators.join('\n'),
+                    inline: true,
+                  },
+                  { name: '🏢 Team', value: CONFIG.CREDITS.team, inline: true },
+                  { name: '📦 Version', value: `v${CONFIG.CREDITS.version}`, inline: true },
+                  {
+                    name: '⚡ Powered By',
+                    value:
+                      '• **Groq AI** (Llama 4 Scout)\n• **OCR.space** (Image Text)\n• **Google TTS** (Speech)',
+                    inline: false,
+                  },
+                  {
+                    name: '✨ Features',
+                    value:
+                      '• AI Chat & Q&A\n• Text-to-Speech\n• Image OCR Analysis\n• Reply Context Awareness\n• 15+ Slash Commands\n• Fun Commands (jokes, facts, quotes)',
+                    inline: false,
+                  },
+                  {
+                    name: '🌐 Connect With Us',
+                    value: `📸 [Instagram](${CONFIG.CREDITS.socials.instagram})\n▶️ [YouTube](${CONFIG.CREDITS.socials.youtube})\n📱 [Play Store](${CONFIG.CREDITS.socials.playstore})\n📧 ${CONFIG.CREDITS.socials.email}`,
+                    inline: false,
+                  }
+                )
+                .setThumbnail(discordClient.user.displayAvatarURL())
+                .setFooter({ text: `Made with ❤️ by ${CONFIG.CREDITS.team}` })
+                .setTimestamp(),
+            ],
           });
           return;
         default:
@@ -558,7 +607,6 @@ async function handleMessage(message) {
 
     const response = await askAI(prompt, CONFIG.PROMPTS[commandType] || CONFIG.PROMPTS.default);
     await sendResponse(message, response, CONFIG.TTS_WITH_AI);
-
   } catch (error) {
     console.error('Message handler error:', error);
     await message.reply('❌ Something went wrong. Please try again.').catch(() => {});
@@ -589,7 +637,10 @@ async function handleSlashCommand(interaction) {
       case 'speak':
         const text = interaction.options.getString('text');
         const audio = await textToSpeech(text);
-        await interaction.editReply({ content: '🔊', files: [new AttachmentBuilder(audio, { name: 'speech.mp3' })] });
+        await interaction.editReply({
+          content: '🔊',
+          files: [new AttachmentBuilder(audio, { name: 'speech.mp3' })],
+        });
         return;
 
       case 'summarize':
@@ -599,7 +650,10 @@ async function handleSlashCommand(interaction) {
       case 'translate':
         const toTranslate = interaction.options.getString('text');
         const targetLang = interaction.options.getString('to');
-        response = await askAI(`Translate to ${targetLang}: "${toTranslate}"`, CONFIG.PROMPTS.translate);
+        response = await askAI(
+          `Translate to ${targetLang}: "${toTranslate}"`,
+          CONFIG.PROMPTS.translate
+        );
         break;
 
       case 'eli5':
@@ -607,7 +661,10 @@ async function handleSlashCommand(interaction) {
         break;
 
       case 'define':
-        response = await askAI(`Define: ${interaction.options.getString('word')}`, CONFIG.PROMPTS.define);
+        response = await askAI(
+          `Define: ${interaction.options.getString('word')}`,
+          CONFIG.PROMPTS.define
+        );
         break;
 
       case 'joke':
@@ -637,56 +694,80 @@ async function handleSlashCommand(interaction) {
         break;
 
       case 'story':
-        response = await askAI(`Write a short story: ${interaction.options.getString('prompt')}`, CONFIG.PROMPTS.creative);
+        response = await askAI(
+          `Write a short story: ${interaction.options.getString('prompt')}`,
+          CONFIG.PROMPTS.creative
+        );
         break;
 
       case 'help':
         await interaction.editReply({
-          embeds: [new EmbedBuilder()
-            .setTitle('🤖 Axiom Commands')
-            .setColor(0x5865F2)
-            .setDescription('Use `/` to see all slash commands!\n\n' +
-              '**/ask** - Ask anything\n' +
-              '**/speak** - Text to speech\n' +
-              '**/summarize** - Summarize text\n' +
-              '**/translate** - Translate text\n' +
-              '**/eli5** - Explain simply\n' +
-              '**/define** - Define a word\n' +
-              '**/joke** - Get a joke\n' +
-              '**/fact** - Random fact\n' +
-              '**/quote** - Inspiring quote\n' +
-              '**/roast** - Playful roast\n' +
-              '**/advice** - Get advice\n' +
-              '**/code** - Review code\n' +
-              '**/story** - Generate story\n' +
-              '**/about** - About Axiom')
-            .setFooter({ text: 'Powered by Groq AI' })]
+          embeds: [
+            new EmbedBuilder()
+              .setTitle('🤖 Axiom Commands')
+              .setColor(0x5865f2)
+              .setDescription(
+                'Use `/` to see all slash commands!\n\n' +
+                  '**/ask** - Ask anything\n' +
+                  '**/speak** - Text to speech\n' +
+                  '**/summarize** - Summarize text\n' +
+                  '**/translate** - Translate text\n' +
+                  '**/eli5** - Explain simply\n' +
+                  '**/define** - Define a word\n' +
+                  '**/joke** - Get a joke\n' +
+                  '**/fact** - Random fact\n' +
+                  '**/quote** - Inspiring quote\n' +
+                  '**/roast** - Playful roast\n' +
+                  '**/advice** - Get advice\n' +
+                  '**/code** - Review code\n' +
+                  '**/story** - Generate story\n' +
+                  '**/about** - About Axiom'
+              )
+              .setFooter({ text: 'Powered by Groq AI' }),
+          ],
         });
         return;
 
       case 'about':
         await interaction.editReply({
-          embeds: [new EmbedBuilder()
-            .setTitle('🤖 About Axiom')
-            .setColor(0x00D4FF)
-            .setDescription('**Axiom** is an advanced AI-powered Discord bot that brings intelligent conversation, text-to-speech, image analysis, and fun commands to your server!')
-            .addFields(
-              { name: '👨‍💻 Created By', value: CONFIG.CREDITS.creators.join('\n'), inline: true },
-              { name: '🏢 Team', value: CONFIG.CREDITS.team, inline: true },
-              { name: '📦 Version', value: `v${CONFIG.CREDITS.version}`, inline: true },
-              { name: '⚡ Powered By', value: '• **Groq AI** (Llama 4 Scout)\n• **OCR.space** (Image Text)\n• **Google TTS** (Speech)', inline: false },
-              { name: '✨ Features', value: '• AI Chat & Q&A\n• Text-to-Speech\n• Image OCR Analysis\n• Reply Context Awareness\n• 15+ Slash Commands\n• Fun Commands (jokes, facts, quotes)', inline: false },
-              { name: '🌐 Connect With Us', value: `📸 [Instagram](${CONFIG.CREDITS.socials.instagram})\n▶️ [YouTube](${CONFIG.CREDITS.socials.youtube})\n📱 [Play Store](${CONFIG.CREDITS.socials.playstore})\n📧 ${CONFIG.CREDITS.socials.email}`, inline: false }
-            )
-            .setThumbnail(discordClient.user.displayAvatarURL())
-            .setFooter({ text: `Made with ❤️ by ${CONFIG.CREDITS.team}` })
-            .setTimestamp()]
+          embeds: [
+            new EmbedBuilder()
+              .setTitle('🤖 About Axiom')
+              .setColor(0x00d4ff)
+              .setDescription(
+                '**Axiom** is an advanced AI-powered Discord bot that brings intelligent conversation, text-to-speech, image analysis, and fun commands to your server!'
+              )
+              .addFields(
+                { name: '👨‍💻 Created By', value: CONFIG.CREDITS.creators.join('\n'), inline: true },
+                { name: '🏢 Team', value: CONFIG.CREDITS.team, inline: true },
+                { name: '📦 Version', value: `v${CONFIG.CREDITS.version}`, inline: true },
+                {
+                  name: '⚡ Powered By',
+                  value:
+                    '• **Groq AI** (Llama 4 Scout)\n• **OCR.space** (Image Text)\n• **Google TTS** (Speech)',
+                  inline: false,
+                },
+                {
+                  name: '✨ Features',
+                  value:
+                    '• AI Chat & Q&A\n• Text-to-Speech\n• Image OCR Analysis\n• Reply Context Awareness\n• 15+ Slash Commands\n• Fun Commands (jokes, facts, quotes)',
+                  inline: false,
+                },
+                {
+                  name: '🌐 Connect With Us',
+                  value: `📸 [Instagram](${CONFIG.CREDITS.socials.instagram})\n▶️ [YouTube](${CONFIG.CREDITS.socials.youtube})\n📱 [Play Store](${CONFIG.CREDITS.socials.playstore})\n📧 ${CONFIG.CREDITS.socials.email}`,
+                  inline: false,
+                }
+              )
+              .setThumbnail(discordClient.user.displayAvatarURL())
+              .setFooter({ text: `Made with ❤️ by ${CONFIG.CREDITS.team}` })
+              .setTimestamp(),
+          ],
         });
         return;
     }
 
     await sendResponse(interaction, response, withTTS);
-
   } catch (error) {
     console.error('Slash command error:', error);
     await interaction.editReply('❌ Something went wrong.').catch(() => {});
@@ -723,8 +804,14 @@ discordClient.on('error', console.error);
 // Graceful Shutdown
 // =============================================================================
 
-process.on('SIGINT', () => { discordClient.destroy(); process.exit(0); });
-process.on('SIGTERM', () => { discordClient.destroy(); process.exit(0); });
+process.on('SIGINT', () => {
+  discordClient.destroy();
+  process.exit(0);
+});
+process.on('SIGTERM', () => {
+  discordClient.destroy();
+  process.exit(0);
+});
 
 // =============================================================================
 // Start Bot

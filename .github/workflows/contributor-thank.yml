@@ -1,0 +1,82 @@
+name: Thank Merged Contributors
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  thank-contributor:
+    name: Thank Contributor
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+
+    steps:
+      - name: Thank the contributor
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prAuthor = context.payload.pull_request.user.login;
+            const prNumber = context.payload.pull_request.number;
+            const prTitle = context.payload.pull_request.title;
+
+            // Check if this is the user's first merged PR
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed',
+              sort: 'updated',
+              direction: 'desc',
+              per_page: 100
+            });
+
+            const mergedPRsByAuthor = prs.filter(pr =>
+              pr.user.login === prAuthor &&
+              pr.merged_at !== null &&
+              pr.number !== prNumber
+            );
+
+            const isFirstMerge = mergedPRsByAuthor.length === 0;
+
+            let message;
+            if (isFirstMerge) {
+              message = `# Congratulations on your first merged PR! 🎉🥳
+
+            @${prAuthor}, your contribution has been merged into Axiom!
+
+            ## You're now officially a contributor! 🏆
+
+            Thank you for helping improve Axiom. Your changes are now part of the project and will help users worldwide.
+
+            ### What's next?
+            - 🌟 Consider starring the repo to show your support
+            - 👀 Keep an eye out for other issues you might help with
+            - 📣 Share your contribution with others!
+
+            ---
+            **Welcome to the NextGenXplorrers family!** 💜
+
+            *Mithun Gowda B & Naren V*`;
+            } else {
+              message = `# PR Merged Successfully! ✅
+
+            Thank you @${prAuthor} for another great contribution!
+
+            Your changes in **"${prTitle}"** are now part of Axiom.
+
+            We appreciate your continued support! 🙏
+
+            ---
+            **NextGenXplorrers Team** 🚀`;
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: message
+            });

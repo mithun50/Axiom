@@ -28,12 +28,12 @@ We take security seriously at NextGenXplorrers Team. If you discover a security 
 
 ### Severity Levels
 
-| Level | Description | Response Time |
-|-------|-------------|---------------|
-| Critical | Remote code execution, data breach | 24 hours |
-| High | Authentication bypass, privilege escalation | 48 hours |
-| Medium | Information disclosure, DoS | 7 days |
-| Low | Minor issues, best practice violations | 14 days |
+| Level    | Description                                 | Response Time |
+| -------- | ------------------------------------------- | ------------- |
+| Critical | Remote code execution, data breach          | 24 hours      |
+| High     | Authentication bypass, privilege escalation | 48 hours      |
+| Medium   | Information disclosure, DoS                 | 7 days        |
+| Low      | Minor issues, best practice violations      | 14 days       |
 
 ## Security Best Practices
 

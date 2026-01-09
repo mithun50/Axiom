@@ -34,6 +34,7 @@ Examples of unacceptable behavior:
 Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
 Project maintainers have the right and responsibility to remove, edit, or reject:
+
 - Comments
 - Commits
 - Code
@@ -45,6 +46,7 @@ that are not aligned to this Code of Conduct.
 ## Scope
 
 This Code of Conduct applies to:
+
 - GitHub repository (issues, pull requests, discussions)
 - Social media interactions related to the project
 - Any community spaces where the project is represented
@@ -61,11 +63,11 @@ All complaints will be reviewed and investigated promptly and fairly.
 
 ### Consequences
 
-| Violation | Consequence |
-|-----------|-------------|
-| First offense | Warning |
-| Second offense | Temporary ban |
-| Severe violation | Permanent ban |
+| Violation         | Consequence             |
+| ----------------- | ----------------------- |
+| First offense     | Warning                 |
+| Second offense    | Temporary ban           |
+| Severe violation  | Permanent ban           |
 | Criminal behavior | Reported to authorities |
 
 ### Privacy
@@ -86,6 +88,6 @@ This Code of Conduct is adapted from the [Contributor Covenant](https://www.cont
 
 **NextGenXplorrers Team**
 
-*Mithun Gowda B & Naren V*
+_Mithun Gowda B & Naren V_
 
 Building the future, one project at a time.

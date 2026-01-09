@@ -1,0 +1,65 @@
+name: Welcome New Contributors
+
+on:
+  pull_request_target:
+    types: [opened]
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  welcome:
+    name: Welcome
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            # Welcome to Axiom! 👋
+
+            Thank you for opening your first issue! We're excited to have you here.
+
+            ## Before we begin:
+            - 📚 Please check our [Documentation](https://mithun50.github.io/Axiom/) for common solutions
+            - 🔍 Search [existing issues](https://github.com/mithun50/Axiom/issues) to avoid duplicates
+            - 📝 Make sure you've filled out the issue template completely
+
+            ## What happens next?
+            Our team will review your issue as soon as possible. In the meantime, feel free to:
+            - ⭐ Star the repository if you find it useful
+            - 📣 Join our community discussions
+
+            ---
+            **NextGenXplorrers Team** 🚀
+            *Mithun Gowda B & Naren V*
+
+          pr-message: |
+            # Welcome, Contributor! 🎉
+
+            Thank you for opening your first Pull Request to Axiom! We're thrilled to have you contribute.
+
+            ## PR Review Process:
+            1. ✅ Automated checks will run (formatting, linting, security)
+            2. 👀 A maintainer will review your changes
+            3. 💬 We may request some changes or ask questions
+            4. 🎊 Once approved, your PR will be merged!
+
+            ## While you wait:
+            - Ensure all CI checks pass
+            - Respond to any automated feedback
+            - Feel free to ask questions in the comments
+
+            ## Important Notes:
+            - By contributing, your code becomes property of NextGenXplorrers Team
+            - Please review our [Contributing Guidelines](https://github.com/mithun50/Axiom/blob/main/CONTRIBUTING.md)
+
+            ---
+            **Thank you for helping make Axiom better!** 💜
+
+            **NextGenXplorrers Team** 🚀
+            *Mithun Gowda B & Naren V*

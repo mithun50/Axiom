@@ -9,6 +9,7 @@
 [![Version](https://img.shields.io/badge/Version-1.0.0-green?style=for-the-badge)](package.json)
 
 A production-ready Discord bot powered by:
+
 - **Groq AI** (Llama 4 Scout) - Fast, intelligent responses
 - **OCR.space** - Extract text from images
 - **Google TTS** - Text-to-speech audio generation
@@ -31,16 +32,16 @@ A production-ready Discord bot powered by:
 
 ## Features
 
-| Feature | Description |
-|---------|-------------|
-| **AI Chat** | Ask anything using Groq's Llama 4 Scout |
-| **Image OCR** | Extract and analyze text from images |
-| **Text-to-Speech** | Convert text to audio messages |
-| **Reply Context** | Understands referenced messages |
-| **Slash Commands** | Modern Discord slash command support |
-| **Prefix Commands** | Classic `!command` style support |
-| **@Mention** | Respond when mentioned |
-| **Fun Commands** | Jokes, facts, quotes, roasts & more |
+| Feature             | Description                             |
+| ------------------- | --------------------------------------- |
+| **AI Chat**         | Ask anything using Groq's Llama 4 Scout |
+| **Image OCR**       | Extract and analyze text from images    |
+| **Text-to-Speech**  | Convert text to audio messages          |
+| **Reply Context**   | Understands referenced messages         |
+| **Slash Commands**  | Modern Discord slash command support    |
+| **Prefix Commands** | Classic `!command` style support        |
+| **@Mention**        | Respond when mentioned                  |
+| **Fun Commands**    | Jokes, facts, quotes, roasts & more     |
 
 ---
 
@@ -48,23 +49,23 @@ A production-ready Discord bot powered by:
 
 ### Slash Commands (/)
 
-| Command | Description |
-|---------|-------------|
-| `/ask <question>` | Ask the AI anything |
-| `/speak <text>` | Convert text to speech |
-| `/summarize <text>` | Summarize text |
-| `/translate <text> <to>` | Translate text |
-| `/eli5 <topic>` | Explain Like I'm 5 |
-| `/define <word>` | Define a word |
-| `/joke` | Tell a joke |
-| `/fact` | Share a random fact |
-| `/quote` | Share an inspiring quote |
-| `/roast @user` | Playful roast |
-| `/advice <topic>` | Get advice |
-| `/code <code>` | Review code |
-| `/story <prompt>` | Generate a story |
-| `/help` | Show all commands |
-| `/about` | About Axiom & creators |
+| Command                  | Description              |
+| ------------------------ | ------------------------ |
+| `/ask <question>`        | Ask the AI anything      |
+| `/speak <text>`          | Convert text to speech   |
+| `/summarize <text>`      | Summarize text           |
+| `/translate <text> <to>` | Translate text           |
+| `/eli5 <topic>`          | Explain Like I'm 5       |
+| `/define <word>`         | Define a word            |
+| `/joke`                  | Tell a joke              |
+| `/fact`                  | Share a random fact      |
+| `/quote`                 | Share an inspiring quote |
+| `/roast @user`           | Playful roast            |
+| `/advice <topic>`        | Get advice               |
+| `/code <code>`           | Review code              |
+| `/story <prompt>`        | Generate a story         |
+| `/help`                  | Show all commands        |
+| `/about`                 | About Axiom & creators   |
 
 ### Prefix Commands (!)
 
@@ -132,11 +133,11 @@ PORT=3000
 
 ### Where to get API keys:
 
-| Service | URL |
-|---------|-----|
+| Service     | URL                                         |
+| ----------- | ------------------------------------------- |
 | Discord Bot | https://discord.com/developers/applications |
-| Groq API | https://console.groq.com/keys |
-| OCR.space | https://ocr.space/ocrapi |
+| Groq API    | https://console.groq.com/keys               |
+| OCR.space   | https://ocr.space/ocrapi                    |
 
 ---
 
@@ -158,11 +159,13 @@ PORT=3000
 **[Click here to invite Axiom to your server](https://discord.com/api/oauth2/authorize?client_id=1459077260941197435&permissions=274877958144&scope=bot%20applications.commands)**
 
 Or use this URL:
+
 ```
 https://discord.com/api/oauth2/authorize?client_id=1459077260941197435&permissions=274877958144&scope=bot%20applications.commands
 ```
 
 Permissions included:
+
 - Send Messages
 - Read Message History
 - Attach Files
@@ -207,6 +210,7 @@ termux-wake-lock
    | Start Command | `npm start` |
 
 6. Add **Environment Variables**:
+
    ```
    DISCORD_TOKEN = your_discord_token
    DISCORD_APP_ID = your_app_id
@@ -235,12 +239,12 @@ termux-wake-lock
 
 ## API Limits
 
-| Service | Free Tier Limit |
-|---------|-----------------|
-| Groq API | Generous free tier with rate limits |
-| OCR.space | 25,000 requests/month |
-| Discord | Standard bot rate limits |
-| Google TTS | Unlimited (fair use) |
+| Service    | Free Tier Limit                     |
+| ---------- | ----------------------------------- |
+| Groq API   | Generous free tier with rate limits |
+| OCR.space  | 25,000 requests/month               |
+| Discord    | Standard bot rate limits            |
+| Google TTS | Unlimited (fair use)                |
 
 ---
 

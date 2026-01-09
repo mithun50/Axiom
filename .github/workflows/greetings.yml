@@ -1,0 +1,116 @@
+name: Issue & PR Greetings
+
+on:
+  issues:
+    types: [labeled]
+  pull_request_target:
+    types: [labeled]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greet-good-first-issue:
+    name: Greet Good First Issue
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.label.name == 'good first issue'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🌱 Good First Issue!
+
+            This issue has been marked as a **good first issue** - perfect for newcomers!
+
+            ### Getting Started:
+            1. 🍴 Fork the repository
+            2. 📥 Clone your fork locally
+            3. 🔧 Make your changes
+            4. ✅ Test your changes
+            5. 📤 Submit a Pull Request
+
+            ### Need Help?
+            - 📚 Check our [Documentation](https://mithun50.github.io/Axiom/)
+            - 📝 Read [Contributing Guidelines](https://github.com/mithun50/Axiom/blob/main/CONTRIBUTING.md)
+            - 💬 Ask questions in the comments
+
+            **We're here to help you succeed!** 🚀
+
+            ---
+            *NextGenXplorrers Team*`
+            });
+
+  greet-help-wanted:
+    name: Greet Help Wanted
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.label.name == 'help wanted'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🆘 Help Wanted!
+
+            We're looking for community help on this issue!
+
+            ### How to Contribute:
+            - Comment below if you'd like to work on this
+            - Ask any clarifying questions
+            - Share your approach before starting
+
+            ### Guidelines:
+            - One person per issue (first come, first served)
+            - If you're stuck, ask for help!
+            - No pressure - just do your best
+
+            **Thank you for considering to help!** 💜
+
+            ---
+            *NextGenXplorrers Team*`
+            });
+
+  greet-security:
+    name: Acknowledge Security Issue
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.label.name == 'security'
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🔒 Security Issue Acknowledged
+
+            Thank you for reporting this security concern. We take security very seriously.
+
+            ### Our Response:
+            - This issue has been flagged for priority review
+            - A maintainer will respond within 48 hours
+            - We may move discussion to a private channel
+
+            ### For Reporters:
+            - Please don't share exploit details publicly
+            - Contact us privately at nxgextra@gmail.com for sensitive issues
+            - See our [Security Policy](https://github.com/mithun50/Axiom/blob/main/SECURITY.md)
+
+            **Thank you for helping keep Axiom secure!** 🛡️
+
+            ---
+            *NextGenXplorrers Team*`
+            });
