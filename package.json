@@ -12,7 +12,7 @@
     "lint": "node --check index.js"
   },
   "dependencies": {
-    "@discordjs/voice": "^0.19.1-dev.1767398517-8ccae833e",
+    "@discordjs/voice": "^0.19.1-pr-11006.1765452229-e636950b2",
     "@snazzah/davey": "^0.1.9",
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
