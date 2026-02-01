@@ -571,7 +571,13 @@ async function askAI(prompt, systemPrompt = CONFIG.PROMPTS.default, channelId = 
   // Auto-detect if time/date is needed - use agent's built-in get_datetime tool
   if (needsDateTime(prompt) && systemPrompt === CONFIG.PROMPTS.default) {
     console.log('🕐 Auto-triggering agent for time/date query');
-    return runAgent(prompt);
+    try {
+      return await runAgent(prompt);
+    } catch (error) {
+      console.error('Agent datetime error, using fallback:', error.message);
+      // Fallback: provide current time directly via web search
+      return webSearchChat(`current ${prompt}`, channelId, userId);
+    }
   }
 
   // Auto-detect if web search is needed
