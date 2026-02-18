@@ -1,4 +1,3 @@
-
 # Axiom Discord AI Bot
 
 [![Invite Axiom](https://img.shields.io/badge/Invite_Axiom-Add_to_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/api/oauth2/authorize?client_id=1459077260941197435&permissions=274877958144&scope=bot%20applications.commands)
